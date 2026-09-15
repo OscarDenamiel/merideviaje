@@ -8,7 +8,7 @@ type Props = {
 
 async function getGuia(slug: string) {
   return client.fetch(
-    `*[_type == "guia" && slug.current == $slug][0]{ titulo, resumen, contenido }`,
+    `*[_type == "articulo" && slug.current == $slug][0]{ titulo, resumen, contenido }`,
     { slug }
   );
 }

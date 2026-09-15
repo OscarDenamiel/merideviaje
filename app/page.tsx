@@ -1,14 +1,14 @@
 import { client } from "@/sanity/client";
-import type { Guia } from "@/lib/types";
+import type { Articulo } from "@/lib/types";
 
-// Esta query intenta leer guías publicadas en Sanity.
+// Esta query intenta leer artículos publicados en Sanity.
 // Si el dataset todavía está vacío (normal al principio), devuelve un array vacío
 // en vez de romper la build — así la web funciona desde el primer despliegue,
 // antes incluso de que Meri haya publicado el primer contenido.
-async function getGuias(): Promise<Guia[]> {
+async function getArticulos(): Promise<Articulo[]> {
   try {
     return await client.fetch(
-      `*[_type == "guia"]{ _id, titulo, "slug": slug.current, resumen }`
+      `*[_type == "articulo"] | order(fechaPublicacion desc){ _id, titulo, "slug": slug.current, tipo, resumen }`
     );
   } catch {
     return [];
@@ -16,7 +16,7 @@ async function getGuias(): Promise<Guia[]> {
 }
 
 export default async function HomePage() {
-  const guias = await getGuias();
+  const guias = await getArticulos();
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-24">
@@ -29,13 +29,13 @@ export default async function HomePage() {
 
       <section className="mt-16">
         <h2 className="text-sm font-medium uppercase tracking-wide text-neutral-400">
-          Guías publicadas
+          Contenido publicado
         </h2>
 
         {guias.length === 0 ? (
           <p className="mt-4 text-neutral-500">
-            Aún no hay guías publicadas en Sanity. En cuanto Meri publique la
-            primera, aparecerá aquí automáticamente.
+            Aún no hay contenido publicado en Sanity. En cuanto Meri publique
+            el primer artículo, aparecerá aquí automáticamente.
           </p>
         ) : (
           <ul className="mt-4 space-y-3">

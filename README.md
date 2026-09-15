@@ -6,13 +6,30 @@ listo para desplegarse y empezar a construir encima.
 
 ## Qué hace ya
 
-- Página de inicio que intenta leer guías desde Sanity (proyecto `mnrvihd5`)
-- Página de detalle de guía en `/guias/[slug]`
+- Página de inicio que lee artículos desde Sanity (proyecto `mnrvihd5`)
+- Página de detalle de artículo en `/guias/[slug]`
 - Sitemap y robots.txt automáticos para SEO
 - Metadatos base (título, descripción, Open Graph)
+- **Sanity Studio embebido en `/studio`** — el panel donde Meri publica contenido,
+  sin necesidad de ninguna otra herramienta ni cuenta aparte
 
 No pasa nada si Sanity aún no tiene contenido: la web funciona igual,
-mostrando un aviso de "aún no hay guías publicadas".
+mostrando un aviso de "aún no hay contenido publicado".
+
+## El modelo de contenido (lo que Meri va a rellenar)
+
+Un solo tipo de contenido, **Artículo**, con un desplegable "Tipo" (Guía / Blog /
+Comparativa) para no complicar el panel desde el principio. Cada artículo tiene:
+título, slug, país, resumen, imagen destacada, contenido con texto enriquecido,
+links de afiliado (nombre + URL + descuento) y campos SEO opcionales.
+
+## Cómo entra Meri a publicar
+
+1. Ve a manage.sanity.io, entra en el proyecto `mnrvihd5` → **Members** → invítala
+   con su email para que tenga acceso de editora.
+2. Una vez desplegada la web, ella entra en `https://tu-dominio-o-url/studio` y
+   se loguea con su cuenta.
+3. Desde ahí crea artículos nuevos sin tocar nada de código.
 
 ## Cómo subir esto a tu repositorio de GitHub (sin usar la terminal)
 

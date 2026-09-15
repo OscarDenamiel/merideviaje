@@ -7,7 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let guias: { slug: string }[] = [];
   try {
     guias = await client.fetch(
-      `*[_type == "guia"]{ "slug": slug.current }`
+      `*[_type == "articulo"]{ "slug": slug.current }`
     );
   } catch {
     guias = [];
