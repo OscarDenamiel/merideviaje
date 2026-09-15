@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { client } from "@/sanity/client";
 
+export const revalidate = 60;
+
 const SITE_URL = "https://merideviaje.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

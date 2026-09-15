@@ -1,6 +1,11 @@
 import { client } from "@/sanity/client";
 import type { Articulo } from "@/lib/types";
 
+// Vuelve a comprobar Sanity como máximo cada 60 segundos, en vez de quedarse
+// con los datos del momento del despliegue. Así el contenido nuevo que
+// publique Meri aparece solo, sin necesidad de volver a desplegar la web.
+export const revalidate = 60;
+
 // Esta query intenta leer artículos publicados en Sanity.
 // Si el dataset todavía está vacío (normal al principio), devuelve un array vacío
 // en vez de romper la build — así la web funciona desde el primer despliegue,
