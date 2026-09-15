@@ -30,15 +30,15 @@ export default async function ComparativaPage({ params }: Props) {
   if (!articulo) notFound();
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24">
-      <p className="text-sm text-neutral-500">
+    <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <p className="text-sm text-ink-4">
         <a href="/comparativas" className="underline">
           Comparativas
         </a>
       </p>
       <h1 className="mt-2 text-3xl font-semibold">{articulo.titulo}</h1>
       {articulo.resumen && (
-        <p className="mt-4 text-lg text-neutral-600">{articulo.resumen}</p>
+        <p className="mt-4 text-lg text-ink-3">{articulo.resumen}</p>
       )}
       {articulo.contenido && (
         <div className="prose prose-neutral mt-10 max-w-none">
@@ -46,8 +46,8 @@ export default async function ComparativaPage({ params }: Props) {
         </div>
       )}
       {articulo.linksAfiliado?.length > 0 && (
-        <section className="mt-12 rounded-lg border border-neutral-200 p-6">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-neutral-400">
+        <section className="mt-12 rounded-lg border border-edge p-6">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-ink-5">
             Opciones recomendadas
           </h2>
           <ul className="mt-3 space-y-2">
@@ -57,7 +57,7 @@ export default async function ComparativaPage({ params }: Props) {
                   <a href={link.url} className="font-medium underline">
                     {link.nombre}
                   </a>
-                  {link.descuento && <span className="text-neutral-500"> — {link.descuento}</span>}
+                  {link.descuento && <span className="text-ink-4"> — {link.descuento}</span>}
                 </li>
               )
             )}

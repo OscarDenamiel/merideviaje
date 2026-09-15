@@ -5,9 +5,19 @@ export type Articulo = {
   tipo: "guia" | "blog" | "comparativa";
   resumen?: string;
   paisSlug?: string;
+  paisNombre?: string;
+  tiempoLectura?: string;
+  imagenUrl?: string;
+  imagenAlt?: string;
 };
 
-export function urlDeArticulo(articulo: Articulo): string {
+export const TIPO_LABEL: Record<Articulo["tipo"], string> = {
+  guia: "Guía",
+  blog: "Blog",
+  comparativa: "Comparativa",
+};
+
+export function urlDeArticulo(articulo: Pick<Articulo, "tipo" | "slug" | "paisSlug">): string {
   switch (articulo.tipo) {
     case "guia":
       return articulo.paisSlug

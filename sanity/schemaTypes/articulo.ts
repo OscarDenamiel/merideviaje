@@ -100,6 +100,12 @@ export default defineType({
             defineField({ name: "nombre", title: "Nombre (ej. IATI Seguros)", type: "string" }),
             defineField({ name: "url", title: "URL de afiliado", type: "url" }),
             defineField({ name: "descuento", title: "Texto del descuento (ej. 15% dto.)", type: "string" }),
+            defineField({
+              name: "nota",
+              title: "Nota corta (por qué lo recomiendas)",
+              description: "Una frase breve y personal, ej. \"El seguro que llevo activo en todos mis viajes\".",
+              type: "string",
+            }),
           ],
           preview: {
             select: { title: "nombre", subtitle: "descuento" },

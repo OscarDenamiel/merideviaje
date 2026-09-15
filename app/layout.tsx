@@ -1,32 +1,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://merideviaje.com"),
   title: {
-    default: "Mary de Viaje — Guías de viaje auténticas",
-    template: "%s | Mary de Viaje",
+    default: "Mery de Viaje — Guías de viaje auténticas",
+    template: "%s | Mery de Viaje",
   },
   description:
-    "Guías de viaje, tips y recomendaciones reales de @merideviaje: experiencias vividas, itinerarios detallados y los mejores descuentos para tu próximo viaje.",
+    "Guías de viaje, tips y recomendaciones reales de @merideviaje: itinerarios probados, tips que sirven de verdad y los descuentos que uso yo misma.",
   openGraph: {
     type: "website",
     locale: "es_ES",
-    siteName: "Mary de Viaje",
+    siteName: "Mery de Viaje",
   },
 };
-
-const navLinks = [
-  { href: "/guias", label: "Guías" },
-  { href: "/blog", label: "Blog" },
-  { href: "/comparativas", label: "Comparativas" },
-  { href: "/recursos", label: "Recursos" },
-  { href: "/tienda", label: "Tienda" },
-  { href: "/asesoria", label: "Asesoría" },
-  { href: "/sobre-mi", label: "Sobre mí" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/contacto", label: "Contacto" },
-];
 
 export default function RootLayout({
   children,
@@ -35,35 +25,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="min-h-screen bg-white text-neutral-900 antialiased">
-        {/* Navegación provisional, solo para poder movernos por la estructura.
-            El diseño real de la cabecera llega con Claude Design. */}
-        <nav className="border-b border-neutral-200 px-6 py-4">
-          <div className="mx-auto flex max-w-3xl flex-wrap gap-x-5 gap-y-2 text-sm">
-            <a href="/" className="font-semibold">
-              Mary de Viaje
-            </a>
-            {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="text-neutral-600 hover:underline">
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </nav>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen bg-cream font-sans text-ink antialiased">
+        <SiteHeader />
         {children}
-        <footer className="mt-24 border-t border-neutral-200 px-6 py-8 text-sm text-neutral-500">
-          <div className="mx-auto flex max-w-3xl flex-wrap gap-x-4 gap-y-2">
-            <a href="/legal/aviso-legal" className="hover:underline">
-              Aviso legal
-            </a>
-            <a href="/legal/privacidad" className="hover:underline">
-              Privacidad
-            </a>
-            <a href="/legal/cookies" className="hover:underline">
-              Cookies
-            </a>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );

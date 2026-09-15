@@ -30,15 +30,15 @@ export default async function BlogArticuloPage({ params }: Props) {
   if (!articulo) notFound();
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24">
-      <p className="text-sm text-neutral-500">
+    <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <p className="text-sm text-ink-4">
         <a href="/blog" className="underline">
           Blog
         </a>
       </p>
       <h1 className="mt-2 text-3xl font-semibold">{articulo.titulo}</h1>
       {articulo.resumen && (
-        <p className="mt-4 text-lg text-neutral-600">{articulo.resumen}</p>
+        <p className="mt-4 text-lg text-ink-3">{articulo.resumen}</p>
       )}
       {articulo.contenido && (
         <div className="prose prose-neutral mt-10 max-w-none">

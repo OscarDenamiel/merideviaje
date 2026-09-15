@@ -38,8 +38,8 @@ export default async function PaisPage({ params }: Props) {
   const guias = await getGuiasDelPais(params.pais);
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24">
-      <p className="text-sm text-neutral-500">
+    <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <p className="text-sm text-ink-4">
         <a href="/guias" className="underline">
           Guías
         </a>{" "}
@@ -48,7 +48,7 @@ export default async function PaisPage({ params }: Props) {
       <h1 className="mt-2 text-3xl font-semibold">Guías de {pais.nombre}</h1>
 
       {guias.length === 0 ? (
-        <p className="mt-6 text-neutral-500">
+        <p className="mt-6 text-ink-4">
           Aún no hay guías publicadas para {pais.nombre}.
         </p>
       ) : (
@@ -57,11 +57,11 @@ export default async function PaisPage({ params }: Props) {
             <li key={guia._id}>
               <a
                 href={`/guias/${params.pais}/${guia.slug}`}
-                className="text-lg font-medium underline underline-offset-4"
+                className="text-lg font-display font-bold underline underline-offset-4"
               >
                 {guia.titulo}
               </a>
-              {guia.resumen && <p className="text-neutral-600">{guia.resumen}</p>}
+              {guia.resumen && <p className="text-ink-3">{guia.resumen}</p>}
             </li>
           ))}
         </ul>

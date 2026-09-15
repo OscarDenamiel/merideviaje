@@ -23,19 +23,19 @@ export default async function BlogIndexPage() {
   const articulos = await getArticulosBlog();
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24">
-      <h1 className="text-3xl font-semibold">Blog</h1>
+    <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <h1 className="font-display text-3xl font-bold">Blog</h1>
 
       {articulos.length === 0 ? (
-        <p className="mt-6 text-neutral-500">Aún no hay artículos publicados.</p>
+        <p className="mt-6 text-ink-4">Aún no hay artículos publicados.</p>
       ) : (
         <ul className="mt-8 space-y-4">
           {articulos.map((a: { _id: string; titulo: string; resumen?: string; slug: string }) => (
             <li key={a._id}>
-              <a href={`/blog/${a.slug}`} className="text-lg font-medium underline underline-offset-4">
+              <a href={`/blog/${a.slug}`} className="text-lg font-display font-bold underline underline-offset-4">
                 {a.titulo}
               </a>
-              {a.resumen && <p className="text-neutral-600">{a.resumen}</p>}
+              {a.resumen && <p className="text-ink-3">{a.resumen}</p>}
             </li>
           ))}
         </ul>
