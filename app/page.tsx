@@ -2,19 +2,16 @@ import { client } from "@/sanity/client";
 import { urlForImage } from "@/sanity/image";
 import { urlDeArticulo, TIPO_LABEL } from "@/lib/types";
 import { tiempoDeLectura } from "@/lib/readTime";
-import { FlightDivider } from "@/components/FlightDivider";
 import { FeaturedGuides } from "@/components/FeaturedGuides";
 
-// Vuelve a comprobar Sanity como máximo cada 60 segundos, en vez de quedarse
-// con los datos del momento del despliegue.
 export const revalidate = 60;
 
 const QUICK_ACCESS = [
-  { href: "/guias", label: "Guías", glyph: "G", tint: "bg-maroon", rotate: "-2deg" },
-  { href: "/blog", label: "Blog", glyph: "B", tint: "bg-coral", rotate: "1.5deg" },
-  { href: "/recursos", label: "Recursos", glyph: "R", tint: "bg-coral", rotate: "-1.5deg" },
-  { href: "/asesoria", label: "Asesoría", glyph: "A", tint: "bg-maroon", rotate: "2deg" },
-  { href: "/tienda", label: "Tienda", glyph: "T", tint: "bg-coral", rotate: "-1.8deg" },
+  { href: "/guias", label: "Guías" },
+  { href: "/blog", label: "Blog" },
+  { href: "/recursos", label: "Recursos y descuentos" },
+  { href: "/asesoria", label: "Asesoría" },
+  { href: "/tienda", label: "Tienda" },
 ];
 
 const BRAND_STATS = [
@@ -57,97 +54,82 @@ export default async function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[clamp(480px,88vh,760px)] w-full overflow-hidden bg-[oklch(45%_0.04_40)]">
-        <div className="absolute inset-0 flex items-center justify-center text-sm text-cloud/60">
-          Vídeo o foto de Meri viajando
+      <section className="relative h-[clamp(460px,82vh,720px)] w-full overflow-hidden bg-[oklch(40%_0.03_40)]">
+        <div className="absolute inset-0 flex items-center justify-center text-sm text-paper/50">
+          Foto/vídeo de Meri viajando
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(20%_0.03_30_/_0.05)] to-[oklch(18%_0.04_25_/_0.75)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(15%_0.02_30_/_0.05)] to-[oklch(12%_0.02_25_/_0.72)]" />
         <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 lg:p-14">
-          <p className="mb-3.5 text-[13px] font-bold uppercase tracking-[0.14em] text-[oklch(90%_0.03_50)]">
+          <p className="mb-3.5 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[oklch(88%_0.02_45)]">
             @merideviaje · Guías de viaje reales
           </p>
-          <h1 className="mb-[18px] max-w-[14ch] font-display text-[clamp(34px,6vw,64px)] font-bold leading-[1.05] text-cloud">
+          <h1 className="mb-[18px] max-w-[15ch] font-display text-[clamp(32px,5.5vw,58px)] font-semibold leading-[1.1] text-paper">
             Viajar bien, sin postureo.
           </h1>
-          <p className="mb-7 max-w-[46ch] text-[clamp(15px,2vw,18px)] leading-relaxed text-[oklch(94%_0.015_55)]">
+          <p className="mb-[26px] max-w-[46ch] text-[clamp(15px,2vw,17px)] leading-relaxed text-[oklch(92%_0.012_50)]">
             Itinerarios probados, tips que sirven de verdad y los descuentos
             que uso yo misma. Sin relleno, sin cien anuncios por página.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap items-center gap-[22px]">
             <a
               href="/guias"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-cloud px-[26px] text-[15px] font-bold text-ink"
+              className="inline-flex min-h-[46px] items-center justify-center bg-coral px-6 text-[14.5px] font-semibold text-paper"
             >
               Ver guías
             </a>
             <a
               href="/recursos"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border-[1.5px] border-[oklch(90%_0.02_55)] px-[26px] text-[15px] font-bold text-cloud"
+              className="inline-flex min-h-11 items-center border-b-[1.5px] border-[oklch(98%_0.006_60_/_0.55)] pb-0.5 text-[14.5px] font-semibold text-paper"
             >
-              Descuentos y recursos
+              Descuentos y recursos →
             </a>
           </div>
         </div>
       </section>
 
-      <FlightDivider />
-
       {/* QUICK ACCESS */}
-      <section className="px-4 pb-2 pt-5 sm:px-6 sm:pt-8 lg:px-12">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-3">
-          {QUICK_ACCESS.map((qa) => (
-            <a
-              key={qa.href}
-              href={qa.href}
-              className="flex flex-col items-start gap-2.5 rounded-2xl border border-edge-card bg-cream-card p-4"
-            >
-              <span
-                className={`flex h-[34px] w-[34px] items-center justify-center rounded-[10px] text-[15px] font-bold text-cloud ${qa.tint}`}
-                style={{ transform: `rotate(${qa.rotate})` }}
-              >
-                {qa.glyph}
-              </span>
-              <span className="font-display text-base font-bold">{qa.label}</span>
-            </a>
-          ))}
-        </div>
-      </section>
+      <nav className="mx-auto flex max-w-[1180px] flex-wrap gap-2.5 border-b border-hairline px-4 py-[22px] sm:px-6 lg:px-12">
+        {QUICK_ACCESS.map((qa) => (
+          <a
+            key={qa.href}
+            href={qa.href}
+            className="inline-flex min-h-10 items-center rounded-[3px] border border-hairline-strong px-4 text-[13.5px] font-semibold text-ink-2"
+          >
+            {qa.label}
+          </a>
+        ))}
+      </nav>
 
       <FeaturedGuides articulos={articulos} />
 
       {/* PARA MARCAS */}
-      <section className="bg-maroon-deep px-4 py-10 text-[oklch(96%_0.015_55)] sm:px-6 sm:py-14 lg:px-12">
-        <div className="mx-auto grid max-w-[1200px] items-center gap-8 sm:grid-cols-[1.3fr_1fr] lg:gap-12">
+      <section className="bg-ink-deep px-4 py-11 text-[oklch(96%_0.006_55)] sm:px-6 sm:py-[76px] lg:px-12">
+        <div className="mx-auto grid max-w-[1180px] items-center gap-8 sm:grid-cols-[1.3fr_1fr] lg:gap-[52px]">
           <div>
-            <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em] text-[oklch(82%_0.08_30)]">
+            <p className="mb-3.5 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[oklch(72%_0.03_40)]">
               Para marcas
             </p>
-            <h2 className="mb-4 font-display text-[clamp(26px,3.5vw,38px)] font-bold leading-tight">
+            <h2 className="mb-4 font-display text-[clamp(26px,3.3vw,36px)] font-semibold leading-[1.2]">
               Contenido UGC que viaja de verdad, con una audiencia que confía.
             </h2>
-            <p className="mb-6 max-w-[52ch] text-[15px] leading-relaxed text-[oklch(80%_0.05_35)]">
+            <p className="mb-[26px] max-w-[52ch] text-[15px] leading-relaxed text-[oklch(80%_0.015_45)]">
               Colaboraciones, campañas y contenido de marca en TikTok e
               Instagram. Aquí tienes mi porfolio y kit de medios.
             </p>
             <a
               href="/portfolio"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-[oklch(96%_0.015_55)] px-[26px] text-[15px] font-bold text-maroon-deep"
+              className="inline-flex min-h-[46px] items-center justify-center bg-[oklch(96%_0.006_55)] px-6 text-[14.5px] font-semibold text-ink-deep"
             >
               Ver portfolio y kit de medios
             </a>
           </div>
-          <div className="grid grid-cols-3 gap-3.5">
+          <div className="grid grid-cols-3 gap-px bg-[oklch(30%_0.02_40)]">
             {BRAND_STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl bg-maroon-card px-2 py-[18px] text-center"
-              >
-                <p className="font-display text-[clamp(22px,3vw,30px)] font-bold">
+              <div key={stat.label} className="bg-ink-deep px-2 py-[22px] text-center">
+                <p className="font-display text-[clamp(24px,3vw,32px)] font-semibold">
                   {stat.value}
                 </p>
-                <p className="mt-1.5 text-[11.5px] text-[oklch(80%_0.05_35)]">
-                  {stat.label}
-                </p>
+                <p className="mt-1.5 text-[11px] text-[oklch(70%_0.015_45)]">{stat.label}</p>
               </div>
             ))}
           </div>

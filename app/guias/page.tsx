@@ -4,7 +4,7 @@ export const revalidate = 60;
 
 export const metadata = {
   title: "Guías de viaje por destino",
-  description: "Todas las guías de viaje de Mary de Viaje, organizadas por país.",
+  description: "Todas las guías de viaje de Meri de Viaje, organizadas por país.",
 };
 
 async function getPaises() {

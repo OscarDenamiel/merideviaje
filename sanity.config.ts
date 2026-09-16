@@ -6,7 +6,7 @@ import { projectId, dataset, apiVersion } from "./sanity/env";
 
 export default defineConfig({
   name: "default",
-  title: "Mary de Viaje",
+  title: "Meri de Viaje",
   projectId,
   dataset,
   basePath: "/studio",

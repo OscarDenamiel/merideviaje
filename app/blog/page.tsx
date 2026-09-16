@@ -4,7 +4,7 @@ export const revalidate = 60;
 
 export const metadata = {
   title: "Blog de viajes",
-  description: "Tips, itinerarios y recomendaciones reales de Mary de Viaje.",
+  description: "Tips, itinerarios y recomendaciones reales de Meri de Viaje.",
 };
 
 async function getArticulosBlog() {

@@ -46,7 +46,7 @@ export default async function ComparativaPage({ params }: Props) {
         </div>
       )}
       {articulo.linksAfiliado?.length > 0 && (
-        <section className="mt-12 rounded-lg border border-edge p-6">
+        <section className="mt-12 border border-hairline p-6">
           <h2 className="text-sm font-medium uppercase tracking-wide text-ink-5">
             Opciones recomendadas
           </h2>
